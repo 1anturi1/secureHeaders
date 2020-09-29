@@ -1,0 +1,11 @@
+# files
+*~
+*.py[cod]
+*.swp
+.vscode
+
+# directories
+lib/*.py[cod]
+venv
+deploy/scanner/*
+.pytest_cache

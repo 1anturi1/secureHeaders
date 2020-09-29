@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta charset="utf-8">
+    <script type=text/javascript src="{{ url_for('static', filename='build/js/nrbrowser.js') }}"></script>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>{% block title %}SecureHeaders{% endblock %}</title>
+
+    {% cache 60*1440 %}
+    <link rel="shortcut icon" href="{{url_for('static', filename='images/owasp_icon.png')}}"/>
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='dist/css/bootstrap.min.css') }}" async>
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='font-awesome/css/font-awesome.min.css') }}" async>
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='nprogress/nprogress.css') }}">
+    {% endcache %}
+
+    {% block custom_css %}
+
+    {% endblock %}
+
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='build/css/custom.min.css') }}" >
+    <meta name="theme-color" content="#EDEDED">
+    <link rel="manifest" href="static/manifest.json">
+  </head>
+
+  <body class="nav-md">
+    <div class="container body">
+      <div class="main_container">
+        <div class="col-md-3 left_col">
+          <div class="left_col scroll-view">
+            <div class="navbar nav_title" style="border: 0;">
+              <a href="/summary" class="site_title"><i class="fa fa-circle"></i> <span>SecureHeaders</span></a>
+            </div>
+
+            <div class="clearfix"></div>
+
+            <br />
+
+            <!-- sidebar menu -->
+            <div id="sidebar-menu" class="main_menu_side hidden-print main_menu">
+              <div class="menu_section">
+                <h3>Main Navigation</h3>
+                <ul class="nav side-menu">
+                  <li><a><i class="fa fa-home"></i> Main Page <span class="fa fa-chevron-down"></span></a>
+                    <ul class="nav child_menu">
+                      <li><a href="/summary">Summary</a></li>
+                      <li><a href="/about">About</a></li>
+                    </ul>
+                  </li>
+                  <li><a><i class="fa fa-filter"></i> Query <span class="fa fa-chevron-down"></span></a>
+                    <ul class="nav child_menu">
+                      <li><a href="/siteinfo">Site Info</a></li>
+                    </ul>
+                  </li>
+                </ul>
+              </div>
+              <div class="menu_section">
+              </div>
+
+            </div>
+            <!-- /sidebar menu -->
+
+            <!-- /menu footer buttons -->
+          </div>
+        </div>
+
+        <!-- top navigation -->
+        <div class="top_nav">
+          <div class="nav_menu">
+            <nav>
+              <div class="nav toggle">
+                <a id="menu_toggle"><i class="fa fa-bars"></i></a>
+              </div>
+
+              <ul class="nav navbar-nav navbar-right">
+                <li class="">
+                  <a href="javascript:;" class="user-profile dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
+                    <img src="{{ url_for('static', filename='images/owasp_icon.png') }}" alt="">OSHP
+                    <span class=" fa fa-angle-down"></span>
+                  </a>
+                  <ul class="dropdown-menu dropdown-usermenu pull-right">
+                    <li><a href="https://www.owasp.org/index.php/OWASP_Secure_Headers_Project"> Project Page</a></li>
+                    <li>
+                      <a href="https://www.github.com/oshp">
+                        <span>Github</span>
+                      </a>
+                    </li>
+                  </ul>
+                </li>
+
+                  {% block total_sites %}
+                  
+                  {% endblock %}
+
+              </ul>
+            </nav>
+          </div>
+        </div>
+        <!-- /top navigation -->
+
+        {% block body %}
+        <!-- page content -->
+
+        <!-- /page content -->
+        {% endblock %}
+
+        {% block footer %}
+        <footer>
+          <div class="pull-right">
+            The OWASP Secure Headers Project | v4.0.0 (cn:jagerm)
+          </div>
+          <div class="clearfix"></div>
+        </footer>
+        {% endblock %}
+      </div>
+    </div>
+
+    <script type=text/javascript src="{{ url_for('static', filename='jquery/dist/jquery.min.js') }}"></script>
+    <script type=text/javascript src="{{ url_for('static', filename='jquery/dist/jquery.dataTables.min.js') }}"></script>
+    <script type=text/javascript src="{{ url_for('static', filename='dist/js/bootstrap.min.js') }}"></script>
+    <script type=text/javascript src="{{ url_for('static', filename='fastclick/lib/fastclick.min.js') }}"></script>
+    <script type=text/javascript src="{{ url_for('static', filename='nprogress/nprogress.min.js') }}"></script>
+
+    <script type=text/javascript src="{{ url_for('static', filename='build/js/custom.js') }}"></script>
+    {% block pnotify %}
+
+    {% endblock %}
+
+    {% block charts_scripts %}
+
+    {% endblock %}
+
+    <script type=text/javascript src="{{ url_for('static', filename='build/js/datatable.js') }}" async></script>
+
+    {% with flashes = get_flashed_messages(with_categories=true) %}
+      {% if flashes %}
+        {% for category, message in flashes %}
+          {% if category == 'notfound' %}
+          <script type="text/javascript" src="{{ url_for('static', filename='build/js/notify-notfound.js') }}" async></script>
+          {% else %}
+          <script type="text/javascript" src="{{ url_for('static', filename='build/js/notify-notset.js') }}" async></script>
+          {% endif %}
+        {% endfor %}
+      {% endif %}
+    {% endwith %}
+
+  <script src="static/pws.js" async></script>
+  </body>
+</html>
