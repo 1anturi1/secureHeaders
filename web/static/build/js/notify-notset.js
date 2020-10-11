@@ -1,1 +1,0 @@
-$(function(){new PNotify({title:"That's not good...",text:"unfortunately this website does not use secure headers.",type:"info",styling:"bootstrap3",addclass: 'dark'})});

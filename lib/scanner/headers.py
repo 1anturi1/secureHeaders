@@ -3,11 +3,8 @@ import os
 import gevent
 
 from gevent import monkey; monkey.patch_all()
-
 from lib.utils.util import get_dictsites
 from lib.utils.util import load_env_config
-
-from lib.database.rdms_db import MySQL
 from lib.scanner.scan import Scan
 from lib.secureheaders.site import Site
 
@@ -34,9 +31,6 @@ class Headers():
         except TypeError:
             print("[!] site <{}> will be excluded from the analysis".format(topsites_row[1]))
 
-    def save_data(self):
-        database = MySQL()
-        database.populate_mysql(self.data)
 
     def run(self, filename, num_threads):
         dictsites = get_dictsites(filename)
@@ -49,4 +43,4 @@ class Headers():
             gevent.joinall(threads)
             start += num_threads
         self.scanner.get_summary(self.data)
-        self.save_data()
+

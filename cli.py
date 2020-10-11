@@ -22,6 +22,7 @@ def scanner_cli():
               type=click.Path(exists=True, readable=True),
               default=os.getenv('TOPSTIES_FILENAME'),
               help='topsites file path.')
+
 @click.option('-t', 
               '--threads',
               'threads_number',
