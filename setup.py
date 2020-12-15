@@ -38,7 +38,6 @@ setup(
     'Jinja2==2.10',
     'MarkupSafe==1.1.0',
     'more-itertools==5.0.0',
-    'mysql-connector==2.1.6',
     'newrelic==4.10.0.112',
     'packaging==18.0',
     'pathlib==1.0.1',

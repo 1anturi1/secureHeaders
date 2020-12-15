@@ -1,10 +1,6 @@
 # coding: utf-8
 import requests
 import os
-from bs4 import BeautifulSoup
-from urllib.request import Request, urlopen
-import re
-
 from urllib.parse import urlparse
 from lib.utils.util import load_env_config
 from requests.exceptions import (
@@ -21,9 +17,11 @@ class Scan():
         load_env_config()
         requests.packages.urllib3.disable_warnings()
 
+    #Método que envía una petición get a la url recibida por parámetro y retorna
+    #la información de respuesta obtenida de manera organizada
     def connect(self, url, scheme='http'):
         headers = {
-            'User-Agent': "OWASP SecureHeaders Project v4.0.0 (https://goo.gl/2SbYhw)",
+            'User-Agent': 'Mozilla/5.0',
             'Origin': "{}".format(os.getenv('ORIGIN'))
         }
         response_data = {
@@ -42,7 +40,6 @@ class Scan():
             response_data['status_code'] = response.status_code
             response_data['headers'] = {hname.lower(): hvalue.lower()
                 for hname, hvalue in dict(response.headers).items()}
-            self.get_links(uri)
         except ConnectionError:
             print("[*] connection error for <{}>".format(url))
         except HTTPError:
@@ -65,15 +62,8 @@ class Scan():
         for site in sites:
             self._gen_stats(site['status_code'], site['url'])
         print('')
-        print('Connections summary')
+        print('Resumen de conexiones:')
         print('https: {}'.format(self.chttps))
         print('http: {}'.format(self.chttp))
         print('error: {}'.format(self.cerror))
-    def get_links(self, url):
-        req = Request(url)
-        html_page = urlopen(req)
-        soup = BeautifulSoup(html_page, "lxml")
-        links = []
-        for link in soup.findAll('a'):
-            links.append(link.get('href'))
-        print(links)
+
