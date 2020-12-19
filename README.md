@@ -1,85 +1,42 @@
-# SecureHeaders
+# USO PRÁCTICO DE ENCABEZADOS HTTP PARA MEJORAR LA SEGURIDAD EN EL PROTOCOLO
 
-OWASP SecureHeaders Project  
+Basado en: OWASP SecureHeaders Project  
 
-SecureHeaders project consist in two main modules:
+Proyecto de grado Andrés Iván Anturi Figueroa
 
-1. an engine to scan a list of sites fastly and with minimal resources;
-2. a web interface with a dashboard to view, search and customize besides
-provide insight and feedback about the use of HTTP secure headers.
+Asesora: Sandra Julieta Rueda Rodríguez, Ph.D.
 
-HTTP secure headers are resources known to some and despised by others.
-However it's a fact that the versatility and security provided by feature can
-help make web applications more secure.
+Universidad de Los Andes
 
-## Dependencies  
+Universidad de Los Andes
+Facultad de Ingeniería
+Departamento de Ingeniería de Sistemas y Computación
 
-- Redis
+
+## Dependencias 
+
+- Microsoft C++ Build Tools 14.0
 - Python 3.6
 
-## Configuration (Dashboard | Scanner)
-
-Edit `.env` file or set environment variable:
-
-````txt
-# general settings
-## scanner
-THREAD_NUMBER=1000
-TOPSTIES_FILENAME=conf/topsites_global.csv
-SENTRY_ENABLED=False
-SENTRY_DSN=''
-
-# http settings
-ORIGIN=http://a.com
-TIMEOUT=3
-
-# mysql settings
-MYSQL_USERNAME=root
-MYSQL_PASSWORD=password
-MYSQL_HOST=localhost
-MYSQL_DATABASE=headers
-
-# redis settings
-REDIS_HOST=localhost
-REDIS_PORT=6379
-REDIS_DB=0
-REDIS_TTL=60
-
-# http header filters
-HEADERS=strict-transport-security,public-key-pins,x-xss-protection,x-frame-options,x-content-type-options,content-security-policy,x-permitted-cross-domain-policies,referrer-policy
-
-# plugins settings
-MIME_TYPES=text/html,text/html; charset=utf-8,text/css,text/xml,application/json,image/png,application/javascript,image/jpeg
-````
-
-
-
-
-#### setup, install and run scanner:
-
-````bash
-# install virtualevn
-#
-pip install virtualenv
-# create virtualenv locally
-#
-virtualenv venv
-# active virtualenv
-#
-source venv/bin/activate
-# install application dependencies
-#
-pip install -r requirements.txt
-# start application (web interface)
-#
-python cli.py scanner -f conf/develop.csv
-Thread pool 1 (0 - 1000)
-[*] connection error for <pclady.com.cn>
-[!] site <pclady.com.cn> will be excluded from the analysis
-
-Connections summary
-https: 3
-http: 2
-error: 2
-
-
+## Pasos para la instalación:
+1.	Descargar el proyecto disponible en: https://github.com/1anturi1/secureHeaders
+2.	Ubicarse desde la consola de comandos en el proyecto. 
+3.	(Opcional ) Instalar entorno virtual: pip install virtualenv
+4.	(Opcional) Crear entorno virtual localmente: virtualenv [nombre_entorno] 
+5.	(Opcional) Activar entorno virtual: 
+Mac OS/Linux:
+source [nombre_entorno]/bin/actívate
+Windows:
+[nombre_entorno]\Scripts\activate
+6.	Instalar las dependencias con: 
+a.	pip install -r requirements.txt
+b.	pip3 install python-dotenv
+c.	python -m pip install gevent
+d.	pip install beautifulsoup4
+e.	pip install requests
+f.	pip install lxml
+7.	Ejecutar la aplicación desde la consola utilizando alguno de los siguientes comandos:
+a.	cli.py
+b.	py cli.py
+c.	python cli.py
+8.	Ingresar la dirección del sitio web que desea escanear con el formato indicado. Omita el protocolo y el www si es el caso, como en el siguiente ejemplo: https://www.amazon.com solo se debe ingresar el “amazon.com”. Si el sitio que desea escanear se encuentra desplegado localmente o en una IP distinta, ingrese la dirección con el siguiente formato: 127.0.0.1:8080
