@@ -23,11 +23,11 @@ Departamento de Ingeniería de Sistemas y Computación
 2.	Ubicarse desde la consola de comandos en el proyecto. 
 3.	(Opcional ) Instalar entorno virtual: pip install virtualenv
 4.	(Opcional) Crear entorno virtual localmente: virtualenv [nombre_entorno] 
-5.	(Opcional) Activar entorno virtual: 
+5.	(Opcional) Activar entorno virtual:
 Mac OS/Linux:
-source [nombre_entorno]/bin/actívate
+ - source [nombre_entorno]/bin/actívate
 Windows:
-[nombre_entorno]\Scripts\activate
+ - [nombre_entorno]\Scripts\activate
 6.	Instalar las dependencias con: 
  - a.	pip install -r requirements.txt
  - b.	pip3 install python-dotenv
