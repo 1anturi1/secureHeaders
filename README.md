@@ -21,12 +21,12 @@ Departamento de Ingeniería de Sistemas y Computación
 ## Pasos para la instalación:
 1.	Descargar el proyecto disponible en: https://github.com/1anturi1/secureHeaders
 2.	Ubicarse desde la consola de comandos en el proyecto. 
-3.	(Opcional ) Instalar entorno virtual: pip install virtualenv
-4.	(Opcional) Crear entorno virtual localmente: virtualenv [nombre_entorno] 
+3.	(Opcional) Instalar entorno virtual: pip install virtualenv
+4.	(Opcional) Crear entorno virtual localmente: virtualenv [nombre_entorno]
 5.	(Opcional) Activar entorno virtual:
-Mac OS/Linux:
+ - Mac OS/Linux:
  - source [nombre_entorno]/bin/actívate
-Windows:
+ - Windows:
  - [nombre_entorno]\Scripts\activate
 6.	Instalar las dependencias con: 
  - a.	pip install -r requirements.txt
