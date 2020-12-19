@@ -8,8 +8,8 @@ Asesora: Sandra Julieta Rueda Rodríguez, Ph.D.
 
 Universidad de Los Andes
 
-Universidad de Los Andes
 Facultad de Ingeniería
+
 Departamento de Ingeniería de Sistemas y Computación
 
 
